@@ -12,9 +12,9 @@ public class SpringBootOneApplication {
 	private static final Logger log = LoggerFactory.getLogger(SpringBootOneApplication.class);
 
 	public static void main(String[] args) {
-		log.debug("SpringBootOneApplication.main()" + " - start");
+		log.debug("SpringBootOneApplication.main() - start");
 		SpringApplication.run(SpringBootOneApplication.class, args);
-		log.debug("SpringBootOneApplication.main()" + " - end");
+		log.debug("SpringBootOneApplication.main() - end");
 	}
 }
 
@@ -22,16 +22,21 @@ public class SpringBootOneApplication {
 @RestController
 class Greet {
 
+	private static final Logger log = LoggerFactory.getLogger(Greet.class);
 	private static final String template = "Hello, %s!";
 
 	@GetMapping("/")
 	@ResponseBody
 	public String self() {
+		log.debug("Greet.self");
 		return "Hey!!";
 	}
 	@RequestMapping("/greet")
 	public @ResponseBody Greeting doGreet(@RequestParam(value = "name", required = false, defaultValue = "Guest") String name) {
-		return new Greeting(String.format(template, name));
+		log.debug("Greet.doGreet : {}", name);
+		Greeting greeting = new Greeting(String.format(template, name));
+		log.debug("Greet.doGreet - greeting : {}", greeting);
+		return greeting;
 	}
 }
 
