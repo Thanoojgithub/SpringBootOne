@@ -12,29 +12,22 @@ Prerequisite
 Steps
 -----
 
-.\gradlew clean build
-
-docker-compose down --remove-orphans
-
-docker-compose down -v
-
-docker-compose up --build
+* .\gradlew clean build
+* docker-compose down --remove-orphans
+* docker-compose down -v
+* docker-compose up --build
 
 
 
 PGAdmin: http://localhost/browser/
 
-db (host)
-
+`db (host)
 root
+root`
 
-root
-
-SELECT id, balance, branch, name FROM public.customer;
-
-INSERT INTO customer (id,name,branch,balance) VALUES ('1','ram','ayodya','100');
-
-INSERT INTO customer (id,name,branch,balance) VALUES ('2','sita','midhila','200.0');	
+* SELECT id, balance, branch, name FROM public.customer;
+* INSERT INTO customer (id,name,branch,balance) VALUES ('1','ram','ayodya','100');
+* INSERT INTO customer (id,name,branch,balance) VALUES ('2','sita','midhila','200.0');
 
 ![image](https://github.com/user-attachments/assets/531584ac-83d2-4511-869c-f497f755c81a)
 
