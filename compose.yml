@@ -1,0 +1,65 @@
+services:
+  db:
+    image: postgres
+    container_name: postgres_db
+    ports:
+      - "5432:5432"  # Expose PostgreSQL port
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    volumes:
+      - gdata:/var/lib/postgresql/data  # Persist database data
+    networks:
+      - bootApp
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    ports:
+      - "80:80"  # Expose pgAdmin on port 80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin  # Persist pgAdmin data
+    depends_on:
+      - db
+    networks:
+      - bootApp
+
+  app:
+    depends_on:
+      - db
+      - pgadmin
+    build:
+      context: .  # Use the Dockerfile in the current directory
+      dockerfile: Dockerfile
+    ports:
+      - '8089:8089'
+    environment:
+      - spring.jpa.hibernate.ddl-auto=update
+      - spring.datasource.url=jdbc:postgresql://db:5432/mydb?createDatabaseIfNotExist=true
+      - spring.datasource.username=root
+      - spring.datasource.password=root
+      - spring.datasource.driver-class-name=org.postgresql.Driver
+      - spring.jpa.show-sql=true
+      - spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+      - spring.jpa.properties.hibernate.boot.allow_jdbc_metadata_access=false
+    volumes:
+      - .m2:/root/.m2
+    networks:
+      - bootApp
+
+volumes:
+  gdata:
+    driver: local
+  pgadmin_data:
+    driver: local
+  .m2:
+    driver: local
+
+networks:
+  bootApp:
+    driver: bridge
+
