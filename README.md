@@ -29,6 +29,13 @@ db (host)
 root
 
 root
+
+SELECT id, balance, branch, name FROM public.customer;
+
+INSERT INTO customer (id,name,branch,balance) VALUES ('1','ram','ayodya','100');
+
+INSERT INTO customer (id,name,branch,balance) VALUES ('2','sita','midhila','200.0');	
+
 ![image](https://github.com/user-attachments/assets/531584ac-83d2-4511-869c-f497f755c81a)
 
 
@@ -36,10 +43,3 @@ App url: http://localhost:8089/
 
 ![image](https://github.com/user-attachments/assets/58b08b62-8484-4c15-9634-272c5e12dea9)
 
-
-
-SELECT id, balance, branch, name FROM public.customer;
-
-INSERT INTO customer (id,name,branch,balance) VALUES ('1','ram','ayodya','100');
-
-INSERT INTO customer (id,name,branch,balance) VALUES ('2','sita','midhila','200.0');	
