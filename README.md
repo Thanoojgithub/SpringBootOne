@@ -13,6 +13,7 @@ Steps
 -----
 
 * .\gradlew clean build
+* docker-compose down
 * docker-compose down --remove-orphans
 * docker-compose down -v
 * docker-compose up --build
