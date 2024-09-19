@@ -1,4 +1,4 @@
-FROM openjdk:21
+FROM openjdk:17
 WORKDIR /app
 CMD ["./gradlew", "clean", "bootJar"]
 COPY build/libs/SpringBootWithDockerOne-0.0.1-SNAPSHOT.jar /app/app.jar
