@@ -20,6 +20,7 @@ Steps
 * docker-compose down -v
 * docker-compose up --build
 * docker rm postgres_db
+* docker rm pgadmin
   
 * curl http://localhost:8089
 
