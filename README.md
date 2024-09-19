@@ -19,6 +19,7 @@ Steps
 * docker-compose down --remove-orphans
 * docker-compose down -v
 * docker-compose up --build
+* docker rm postgres_db
   
 * curl http://localhost:8089
 
