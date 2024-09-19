@@ -7,7 +7,7 @@ Prerequisite
 
 - JDK 21 : https://download.java.net/java/GA/jdk21.0.2/f2283984656d49d69e91c558476027ac/13/GPL/openjdk-21.0.2_windows-x64_bin.zip
 - Docker: https://www.docker.com/products/docker-desktop/
-
+- git clone https://github.com/thanoojgithub/SpringBootOne.git -b oncloud
 
 Steps
 -----
