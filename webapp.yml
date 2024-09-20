@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: webapp
-          image: thanoojdocker/springbootpostgres
+          image: thanoojdocker/springbootpostgres:1.0
           ports:
             - containerPort: 8089
           env:
@@ -51,6 +51,6 @@ spec:
     app: webapp
   ports:
     - protocol: "TCP"
-      port: 8080 # The port that the service is running on in the cluster
-      targetPort: 8080 # The port exposed by the service
+      port: 8089 # The port that the service is running on in the cluster
+      targetPort: 8089 # The port exposed by the service
   type: NodePort # type of the service.
