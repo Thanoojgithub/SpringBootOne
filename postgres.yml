@@ -22,8 +22,8 @@ spec:
           env:
             - name: POSTGRES_DB
               valueFrom:
-                secretKeyRef:
-                  name: postgres-secret
+                configMapKeyRef:
+                  name: postgres-config
                   key: postgres-db
             - name: POSTGRES_USER
               valueFrom:
