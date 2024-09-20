@@ -20,21 +20,26 @@ spec:
           ports:
             - containerPort: 8089
           env:
-            - name: USER_NAME
+            - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: postgres-secret
                   key: postgres-user
-            - name: USER_PWD
+            - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: postgres-secret
                   key: postgres-password
-            - name: DB_URL
+            - name: DB_HOST
               valueFrom:
                 configMapKeyRef:
                   name: postgres-config
-                  key: postgres-url
+                  key: postgres-host
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: postgres-db
 ---
 apiVersion: v1
 kind: Service
@@ -45,7 +50,7 @@ spec:
   selector:
     app: webapp
   ports:
-    - protocol: TCP
-      port: 8089
-      targetPort: 8089
-      nodePort: 30100
+    - protocol: "TCP"
+      port: 8080 # The port that the service is running on in the cluster
+      targetPort: 8080 # The port exposed by the service
+  type: NodePort # type of the service.
